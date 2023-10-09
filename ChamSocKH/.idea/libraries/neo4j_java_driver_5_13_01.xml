@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="neo4j-java-driver-5.13.01">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/lib/neo4j-java-driver-5.13.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

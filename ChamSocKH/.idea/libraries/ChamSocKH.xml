@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ChamSocKH">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/ChamSocKH.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
