@@ -7,6 +7,7 @@ package chamsockh;
 import chamsockh.DichVu.frmDichVu;
 import chamsockh.DichVu.frmSuaDichVu;
 import chamsockh.DichVu.frmThemDichVu;
+import chamsockh.Voucher.frmVoucher;
 
 /**
  *
@@ -33,14 +34,25 @@ public class frmTrangChu extends javax.swing.JFrame {
 
         jMenu1 = new javax.swing.JMenu();
         jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
         desktop = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         mnuDichVu = new javax.swing.JMenu();
         mnuAllDichVu = new javax.swing.JMenuItem();
         mnuThemDichVu = new javax.swing.JMenuItem();
         mnuSuaDichVu = new javax.swing.JMenuItem();
+        mnuVoucher = new javax.swing.JMenu();
+        mnuHienThiVoucher = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
+
+        jMenu2.setText("File");
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Edit");
+        jMenuBar1.add(jMenu3);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,6 +97,18 @@ public class frmTrangChu extends javax.swing.JFrame {
 
         menuBar.add(mnuDichVu);
 
+        mnuVoucher.setText("Voucher");
+
+        mnuHienThiVoucher.setText("Hiển thị voucher");
+        mnuHienThiVoucher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuHienThiVoucherActionPerformed(evt);
+            }
+        });
+        mnuVoucher.add(mnuHienThiVoucher);
+
+        menuBar.add(mnuVoucher);
+
         setJMenuBar(menuBar);
 
         pack();
@@ -113,6 +137,14 @@ public class frmTrangChu extends javax.swing.JFrame {
         frm.toFront();
         frm.show();
     }//GEN-LAST:event_mnuSuaDichVuActionPerformed
+
+    private void mnuHienThiVoucherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuHienThiVoucherActionPerformed
+        frmVoucher frm = new frmVoucher();
+        frm.setSize(790, 550);
+        this.desktop.add(frm);
+        frm.toFront();
+        frm.show();
+    }//GEN-LAST:event_mnuHienThiVoucherActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,11 +184,16 @@ public class frmTrangChu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem mnuAllDichVu;
     private javax.swing.JMenu mnuDichVu;
+    private javax.swing.JMenuItem mnuHienThiVoucher;
     private javax.swing.JMenuItem mnuSuaDichVu;
     private javax.swing.JMenuItem mnuThemDichVu;
+    private javax.swing.JMenu mnuVoucher;
     // End of variables declaration//GEN-END:variables
 }
