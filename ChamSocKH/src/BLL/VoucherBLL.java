@@ -25,4 +25,59 @@ public class VoucherBLL {
             return null;
         }
     }
+     
+    public ResultSet getAllVoucherByMaVoucher(String maVoucher){
+        try{
+            return _dal.getAllVoucherByMaVoucher(maVoucher);
+        } catch(Exception e){
+            return null;
+        }
+    }
+    
+    public ResultSet getAllVoucherByTenVoucher(String tenVoucher){
+        try{
+            return _dal.getAllVoucherByTenVoucher(tenVoucher);
+        } catch(Exception e){
+            return null;
+        }
+    }
+    
+    public int getSLVoucherTheoMa(String maVoucher){
+        try{
+            ResultSet kq = _dal.getSLVoucherTheoMa(maVoucher);
+            if(kq != null){
+                while(kq.next()){
+                    String sl = kq.getString("SL");
+                    return Integer.parseInt(sl);
+                }
+            }
+        } catch(Exception e){
+            return -1;
+        }
+        return 0;
+    }
+    
+    public int insertNew(String maVoucher, String tenVoucher, Double giamGia){
+        try{
+            return _dal.insertNew(maVoucher, tenVoucher, giamGia);
+        } catch(Exception e){
+            return -1;
+        }
+    }
+    
+    public int delete(String madv){
+        try{
+            return _dal.delete(madv);
+        } catch(Exception e){
+            return -1;
+        }
+    }
+    
+    public int update(String maVoucher, String tenVoucher, Double giamGia){
+        try{
+            return _dal.update(maVoucher, tenVoucher, giamGia);
+        } catch(Exception e){
+            return -1;
+        }
+    }
 }

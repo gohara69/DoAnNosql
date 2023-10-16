@@ -5,8 +5,6 @@
 package chamsockh;
 
 import chamsockh.DichVu.frmDichVu;
-import chamsockh.DichVu.frmSuaDichVu;
-import chamsockh.DichVu.frmThemDichVu;
 import chamsockh.Voucher.frmVoucher;
 
 /**
@@ -41,8 +39,6 @@ public class frmTrangChu extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         mnuDichVu = new javax.swing.JMenu();
         mnuAllDichVu = new javax.swing.JMenuItem();
-        mnuThemDichVu = new javax.swing.JMenuItem();
-        mnuSuaDichVu = new javax.swing.JMenuItem();
         mnuVoucher = new javax.swing.JMenu();
         mnuHienThiVoucher = new javax.swing.JMenuItem();
 
@@ -79,22 +75,6 @@ public class frmTrangChu extends javax.swing.JFrame {
         });
         mnuDichVu.add(mnuAllDichVu);
 
-        mnuThemDichVu.setText("Thêm dịch vụ");
-        mnuThemDichVu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuThemDichVuActionPerformed(evt);
-            }
-        });
-        mnuDichVu.add(mnuThemDichVu);
-
-        mnuSuaDichVu.setText("Sửa dịch vu");
-        mnuSuaDichVu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuSuaDichVuActionPerformed(evt);
-            }
-        });
-        mnuDichVu.add(mnuSuaDichVu);
-
         menuBar.add(mnuDichVu);
 
         mnuVoucher.setText("Voucher");
@@ -114,37 +94,21 @@ public class frmTrangChu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mnuAllDichVuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAllDichVuActionPerformed
-        frmDichVu frm = new frmDichVu();
-        frm.setSize(790, 550);
-        this.desktop.add(frm);
-        frm.toFront();
-        frm.show();
-    }//GEN-LAST:event_mnuAllDichVuActionPerformed
-
-    private void mnuThemDichVuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuThemDichVuActionPerformed
-        frmThemDichVu frm = new frmThemDichVu();
-        frm.setSize(790, 550);
-        this.desktop.add(frm);
-        frm.toFront();
-        frm.show();
-    }//GEN-LAST:event_mnuThemDichVuActionPerformed
-
-    private void mnuSuaDichVuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuSuaDichVuActionPerformed
-        frmSuaDichVu frm = new frmSuaDichVu();
-        frm.setSize(790, 550);
-        this.desktop.add(frm);
-        frm.toFront();
-        frm.show();
-    }//GEN-LAST:event_mnuSuaDichVuActionPerformed
-
     private void mnuHienThiVoucherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuHienThiVoucherActionPerformed
         frmVoucher frm = new frmVoucher();
-        frm.setSize(790, 550);
+        frm.setSize(910, 550);
         this.desktop.add(frm);
         frm.toFront();
         frm.show();
     }//GEN-LAST:event_mnuHienThiVoucherActionPerformed
+
+    private void mnuAllDichVuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAllDichVuActionPerformed
+        frmDichVu frm = new frmDichVu();
+        frm.setSize(910, 550);
+        this.desktop.add(frm);
+        frm.toFront();
+        frm.show();
+    }//GEN-LAST:event_mnuAllDichVuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,8 +156,6 @@ public class frmTrangChu extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuAllDichVu;
     private javax.swing.JMenu mnuDichVu;
     private javax.swing.JMenuItem mnuHienThiVoucher;
-    private javax.swing.JMenuItem mnuSuaDichVu;
-    private javax.swing.JMenuItem mnuThemDichVu;
     private javax.swing.JMenu mnuVoucher;
     // End of variables declaration//GEN-END:variables
 }

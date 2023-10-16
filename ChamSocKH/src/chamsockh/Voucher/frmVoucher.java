@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -49,6 +51,70 @@ public class frmVoucher extends javax.swing.JInternalFrame {
 
         tblVoucher.setModel(new DefaultTableModel(data, header));
     }
+    
+    public void displayDetail(int row){
+        if(row >= 0){
+            Vector<String> info = (Vector<String>) data.get(row);
+            txtMaVoucher.setText(info.get(0));
+            txtTenVoucher.setText(info.get(1));
+            txtGiamGia.setText(info.get(2));
+        }
+    }
+    
+    public void loadAllData(){
+        DefaultTableModel model = ((DefaultTableModel)tblVoucher.getModel());
+        model.setRowCount(0);
+        ResultSet rs = _bll.getAllVoucher();
+        if(rs != null){
+            try {
+                while(rs.next()){
+                    Vector<String> info = new Vector<String>();
+                    info.add(rs.getString("MV"));
+                    info.add(rs.getString("TenV"));
+                    info.add(rs.getString("GiamGia"));
+                    data.add(info);
+                }   
+            } catch (SQLException ex) {
+                Logger.getLogger(frmDichVu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Không tồn tại mã voucher cần tìm");
+        }
+    }
+
+    public void loadDataByMaVoucher(String maVoucher){
+        DefaultTableModel model = ((DefaultTableModel)tblVoucher.getModel());
+        model.setRowCount(0);
+        ResultSet rs = _bll.getAllVoucherByMaVoucher(maVoucher);
+        try {
+            while(rs.next()){
+                Vector<String> info = new Vector<String>();
+                info.add(rs.getString("MaVoc"));
+                info.add(rs.getString("TenVoc"));
+                info.add(rs.getString("GiamGia"));
+                data.add(info);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(frmDichVu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void loadDataByTenVoucher(String tenVoucher){
+        DefaultTableModel model = ((DefaultTableModel)tblVoucher.getModel());
+        model.setRowCount(0);
+        ResultSet rs = _bll.getAllVoucherByTenVoucher(tenVoucher);
+        try {
+            while(rs.next()){
+                Vector<String> info = new Vector<String>();
+                info.add(rs.getString("MaVoc"));
+                info.add(rs.getString("TenVoc"));
+                info.add(rs.getString("GiamGia"));
+                data.add(info);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(frmDichVu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -71,7 +137,7 @@ public class frmVoucher extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         txtGiamGia = new javax.swing.JTextField();
         btnThem = new javax.swing.JButton();
-        btnLuu = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -128,51 +194,138 @@ public class frmVoucher extends javax.swing.JInternalFrame {
         getContentPane().add(txtGiamGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 150, -1));
 
         btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
 
-        btnLuu.setText("Lưu");
-        getContentPane().add(btnLuu, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, -1, -1));
+        btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblVoucherMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblVoucherMouseClicked
-//        displayDetail(((JTable)evt.getSource()).getSelectedRow());
+        displayDetail(((JTable)evt.getSource()).getSelectedRow());
     }//GEN-LAST:event_tblVoucherMouseClicked
 
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
-        String madv = txtMaVoucher.getText();
-        String tendv = txtTenVoucher.getText();
+        String maVoucher = txtMaVoucher.getText();
+        String tenVoucher = txtTenVoucher.getText();
 
-//        if(madv.isEmpty() && tendv.isEmpty()){
-//            loadAllData();
-//        } else {
-//            if(madv.isEmpty() == false){
-//                loadDataByMaDV(madv);
-//            } else {
-//                loadDataByTenDV(tendv);
-//            }
-//        }
+        if(maVoucher.isEmpty() && tenVoucher.isEmpty()){
+            loadAllData();
+        } else {
+            if(maVoucher.isEmpty() == false){
+                loadDataByMaVoucher(maVoucher);
+            } else {
+                loadDataByTenVoucher(tenVoucher);
+            }
+        }
     }//GEN-LAST:event_btnTimKiemActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-//        String madv = txtMaVoucher.getText();
-//        if(madv.isEmpty()){
-//            System.out.println("Vui lòng nhập mã dịch vụ để xóa");
-//        } else {
-//            try{
-//                int kq = dvBll.delete(madv);
-//                JOptionPane.showMessageDialog(this, "Xóa dịch vụ thành công");
-//                loadAllData();
-//            } catch (Exception e){
-//                JOptionPane.showMessageDialog(this, "Lỗi không thể xóa dịch vụ");
-//            }
-//        }
+        String maVoucher = txtMaVoucher.getText();
+        if(maVoucher.isEmpty()){
+            System.out.println("Vui lòng nhập mã dịch vụ để xóa");
+        } else {
+            int sl = _bll.getSLVoucherTheoMa(maVoucher);
+            if(sl == 0){
+                JOptionPane.showMessageDialog(this, "Không tồn tại mã voucher để xóa");
+            } else {
+                try{
+                    _bll.delete(maVoucher);
+                    JOptionPane.showMessageDialog(this, "Xóa voucher thành công");
+                    loadAllData();
+                } catch (Exception e){
+                    JOptionPane.showMessageDialog(this, "Lỗi không thể xóa voucher");
+                }
+            }
+        }
     }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        String maVoucher = txtMaVoucher.getText();
+        String tenVoucher = txtTenVoucher.getText();
+        var giamGia = Double.valueOf("0");
+        //String lienhe = ((ComboBoxItem)cboLienHe.getSelectedItem()).getKeyString();
+
+        if(maVoucher.isEmpty() || tenVoucher.isEmpty() || txtGiamGia.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin để thêm voucher");
+            return;
+        }
+        
+        try{
+            giamGia = Double.valueOf(txtGiamGia.getText());
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Giảm giá phải thuộc [0,1]");
+            return;
+        }
+            
+        if(giamGia < 0 || giamGia > 1){
+            JOptionPane.showMessageDialog(this, "Giảm giá phải thuộc [0,1]");
+            return;
+        }
+        try{
+            int sl = _bll.getSLVoucherTheoMa(maVoucher);
+            if(sl == 0){
+                _bll.insertNew(maVoucher, tenVoucher, giamGia);
+                JOptionPane.showMessageDialog(this, "Thêm voucher thành công");
+                loadAllData();
+            } else if(sl > 0) {
+                JOptionPane.showMessageDialog(this, "Lỗi trùng khóa mã voucher");
+            }
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Lỗi không thể thêm mới dịch vụ");
+        }
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        String maVoucher = txtMaVoucher.getText();
+        String tenVoucher = txtTenVoucher.getText();
+        var giamGia = Double.valueOf("0");
+        //String lienhe = ((ComboBoxItem)cboLienHe.getSelectedItem()).getKeyString();
+
+        if(maVoucher.isEmpty() || tenVoucher.isEmpty() || txtGiamGia.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin để sửa voucher");
+            return;
+        }
+        
+        try{
+            giamGia = Double.valueOf(txtGiamGia.getText());
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Giảm giá phải thuộc [0,1]");
+            return;
+        }
+            
+        if(giamGia < 0 || giamGia > 1){
+            JOptionPane.showMessageDialog(this, "Giảm giá phải thuộc [0,1]");
+            return;
+        }
+        try{
+            int sl = _bll.getSLVoucherTheoMa(maVoucher);
+            if(sl == 0){
+                JOptionPane.showMessageDialog(this, "Không tồn tại voucher có mã " + maVoucher);
+            } else {
+                _bll.update(maVoucher, tenVoucher, giamGia);
+                loadAllData();
+                JOptionPane.showMessageDialog(this, "Sửa voucher thành công");
+            }
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Lỗi không thể thêm mới dịch vụ");
+        }
+    }//GEN-LAST:event_btnSuaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLuu;
+    private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnTimKiem;
     private javax.swing.JButton btnXoa;

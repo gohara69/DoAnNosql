@@ -63,6 +63,8 @@ public class frmDichVu extends javax.swing.JInternalFrame {
             Vector<String> info = (Vector<String>) data.get(row);
             txtMaDV.setText(info.get(0));
             txtTenDV.setText(info.get(1));
+            txtGiaDV.setText(info.get(3));
+            txtMoTa.setText(info.get(2));
         }
     }
     
@@ -131,6 +133,7 @@ public class frmDichVu extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Không tồn tại mã dịch vụ cần tìm");
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -149,6 +152,13 @@ public class frmDichVu extends javax.swing.JInternalFrame {
         tblDichVu = new javax.swing.JTable();
         btnTimKiem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
+        txtGiaDV = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtMoTa = new javax.swing.JTextArea();
+        btnThem = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
 
         setBorder(null);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -159,11 +169,11 @@ public class frmDichVu extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Mã dịch vụ");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 61, -1, -1));
-        getContentPane().add(txtMaDV, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 148, -1));
+        getContentPane().add(txtMaDV, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 250, -1));
 
         jLabel3.setText("Tên dịch vụ");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
-        getContentPane().add(txtTenDV, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 148, -1));
+        getContentPane().add(txtTenDV, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 250, -1));
 
         tblDichVu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -183,7 +193,7 @@ public class frmDichVu extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tblDichVu);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 500, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 500, -1));
 
         btnTimKiem.setText("Tìm kiếm");
         btnTimKiem.addActionListener(new java.awt.event.ActionListener() {
@@ -191,7 +201,7 @@ public class frmDichVu extends javax.swing.JInternalFrame {
                 btnTimKiemActionPerformed(evt);
             }
         });
-        getContentPane().add(btnTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, -1, -1));
+        getContentPane().add(btnTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, -1, -1));
 
         btnXoa.setText("Xóa");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
@@ -199,7 +209,36 @@ public class frmDichVu extends javax.swing.JInternalFrame {
                 btnXoaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, -1));
+        getContentPane().add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, -1, -1));
+        getContentPane().add(txtGiaDV, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 250, -1));
+
+        jLabel6.setText("Giá dịch vụ");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+
+        jLabel7.setText("Mô tả");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
+
+        txtMoTa.setColumns(20);
+        txtMoTa.setRows(5);
+        jScrollPane2.setViewportView(txtMoTa);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 250, -1));
+
+        btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
+
+        btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -238,16 +277,76 @@ public class frmDichVu extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnXoaActionPerformed
 
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        String madv = txtMaDV.getText();
+        String tendv = txtTenDV.getText();
+        Long giadv = Long.parseLong("0");
+        String motadv = txtMoTa.getText();
+        //String lienhe = ((ComboBoxItem)cboLienHe.getSelectedItem()).getKeyString();
+
+        try{
+            giadv = Long.parseLong(txtGiaDV.getText());
+            if(madv.isEmpty() || tendv.isEmpty() || motadv.isEmpty()){
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin để thêm dịch vụ");
+            } else {
+                int sl = dvBll.getSLDichVuTheoMa(madv);
+                if(sl == 0){
+                    int kq = dvBll.insertNew(madv, tendv, giadv, motadv);
+                    JOptionPane.showMessageDialog(this, "Thêm dịch vụ thành công");
+                    loadAllData();
+                } else if(sl > 0) {
+                    JOptionPane.showMessageDialog(this, "Lỗi trùng khóa mã dịch vụ");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Lỗi không thể thêm mới dịch vụ");
+                }
+            }
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Lỗi không thể thêm mới dịch vụ");
+        }
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        String madv = txtMaDV.getText();
+        String tendv = txtTenDV.getText();
+        Long giadv = Long.parseLong("0");
+        String motadv = txtMoTa.getText();
+
+        try{
+            giadv = Long.parseLong(txtGiaDV.getText());
+            if(madv.isEmpty() || tendv.isEmpty() || motadv.isEmpty()){
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin để thêm dịch vụ");
+            } else {
+                int sl = dvBll.getSLDichVuTheoMa(madv);
+                if(sl > 0){
+                    int kq = dvBll.update(madv, tendv, giadv, motadv);
+                    JOptionPane.showMessageDialog(this, "Sửa dịch vụ thành công");
+                    loadAllData();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Lỗi không thể sửa dịch vụ");
+                }
+            }
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Lỗi không thể sửa dịch vụ");
+        }
+    }//GEN-LAST:event_btnSuaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnThem;
     private javax.swing.JButton btnTimKiem;
     private javax.swing.JButton btnXoa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblDichVu;
+    private javax.swing.JTextField txtGiaDV;
     private javax.swing.JTextField txtMaDV;
+    private javax.swing.JTextArea txtMoTa;
     private javax.swing.JTextField txtTenDV;
     // End of variables declaration//GEN-END:variables
 
