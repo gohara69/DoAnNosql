@@ -6,6 +6,7 @@ package chamsockh;
 
 import chamsockh.DichVu.frmDichVu;
 import chamsockh.Voucher.frmVoucher;
+import chamsockh.NhanVien.frmNhanVien;
 
 /**
  *
@@ -41,6 +42,8 @@ public class frmTrangChu extends javax.swing.JFrame {
         mnuAllDichVu = new javax.swing.JMenuItem();
         mnuVoucher = new javax.swing.JMenu();
         mnuHienThiVoucher = new javax.swing.JMenuItem();
+        mnuNhanVien = new javax.swing.JMenu();
+        mnuShowEmp = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -89,6 +92,19 @@ public class frmTrangChu extends javax.swing.JFrame {
 
         menuBar.add(mnuVoucher);
 
+        mnuNhanVien.setText("Nhân viên");
+        mnuNhanVien.setName("mnuNhanVien"); // NOI18N
+
+        mnuShowEmp.setText("Hiển thị nhân viên");
+        mnuShowEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuShowEmpActionPerformed(evt);
+            }
+        });
+        mnuNhanVien.add(mnuShowEmp);
+
+        menuBar.add(mnuNhanVien);
+
         setJMenuBar(menuBar);
 
         pack();
@@ -109,6 +125,14 @@ public class frmTrangChu extends javax.swing.JFrame {
         frm.toFront();
         frm.show();
     }//GEN-LAST:event_mnuAllDichVuActionPerformed
+
+    private void mnuShowEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuShowEmpActionPerformed
+        frmNhanVien frm = new frmNhanVien();
+        frm.setSize(910, 550);
+        this.desktop.add(frm);
+        frm.toFront();
+        frm.show();
+    }//GEN-LAST:event_mnuShowEmpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,6 +180,8 @@ public class frmTrangChu extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuAllDichVu;
     private javax.swing.JMenu mnuDichVu;
     private javax.swing.JMenuItem mnuHienThiVoucher;
+    private javax.swing.JMenu mnuNhanVien;
+    private javax.swing.JMenuItem mnuShowEmp;
     private javax.swing.JMenu mnuVoucher;
     // End of variables declaration//GEN-END:variables
 }
