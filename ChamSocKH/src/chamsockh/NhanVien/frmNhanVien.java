@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package chamsockh.NhanVien;
+
 import BLL.NhanVienBll;
 import chamsockh.frmTrangChu;
 import java.sql.ResultSet;
@@ -21,6 +22,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import org.json.JSONObject;
+
 /**
  *
  * @author PC
@@ -33,26 +35,17 @@ public class frmNhanVien extends javax.swing.JInternalFrame {
     NhanVienBll nvBll = new NhanVienBll();
     Vector data = new Vector();
     Vector header = new Vector();
+
     public frmNhanVien() {
         initComponents();
         initTable();
         ResultSet rs = nvBll.getAllNhanVien();
         try {
-            while(rs.next()){
+            while (rs.next()) {
                 Vector<String> info = new Vector<String>();
                 // Lấy chuỗi ngày từ Neo4j qua, nó là 1 dạng JSON gì đó
                 String ngaySinh = rs.getString("NgaySinhNV");
-                // Tạo kiểu JSONObject để chứa kiểu dữ liệu ngày vừa lấy từ Neo4j qua
-                JSONObject jsonObject = new JSONObject(ngaySinh);
-                // Tạo một đối tượng LocalDateTime và phân tích chuỗi JSON ra thành kiểu LocalDateTime
-                LocalDateTime localDateTime = LocalDateTime.of(
-                    jsonObject.getInt("year"),
-                    jsonObject.getInt("monthValue"),
-                    jsonObject.getInt("dayOfMonth"),
-                    0,
-                    0,
-                    0
-                );
+                LocalDateTime localDateTime = convertDateNeo4j_To_StandardDate(ngaySinh);
                 info.add(rs.getString("MaNV"));
                 info.add(rs.getString("TenNV"));
                 // Chuyển kiểu LocalDateTime về kiểu Date phù hợp để xuất ra màn hình
@@ -66,7 +59,8 @@ public class frmNhanVien extends javax.swing.JInternalFrame {
             Logger.getLogger(frmNhanVien.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void initTable(){
+
+    public void initTable() {
         header.add("Mã nhân viên");
         header.add("Tên nhân viên");
         header.add("Ngày sinh");
@@ -76,9 +70,9 @@ public class frmNhanVien extends javax.swing.JInternalFrame {
 
         tbNhanVien.setModel(new DefaultTableModel(data, header));
     }
-    
-    public void displayDetail(int row){
-        if(row >= 0){
+
+    public void displayDetail(int row) {
+        if (row >= 0) {
             Vector<String> info = (Vector<String>) data.get(row);
             txtMaNV.setText(info.get(0));
             txtTenNV.setText(info.get(1));
@@ -88,29 +82,104 @@ public class frmNhanVien extends javax.swing.JInternalFrame {
             cboChucVu.setSelectedItem(info.get(5));
         }
     }
-    
-    public void loadAllData(){
-        DefaultTableModel model = ((DefaultTableModel)tbNhanVien.getModel());
+
+    public void loadAllData() {
+        DefaultTableModel model = ((DefaultTableModel) tbNhanVien.getModel());
         model.setRowCount(0);
         ResultSet rs = nvBll.getAllNhanVien();
-        if(rs != null){
+        if (rs != null) {
             try {
-                while(rs.next()){
+                while (rs.next()) {
                     Vector<String> info = new Vector<String>();
+                    // Lấy chuỗi ngày từ Neo4j qua, nó là 1 dạng JSON gì đó
+                    String ngaySinh = rs.getString("NgaySinhNV");
+                    LocalDateTime localDateTime = convertDateNeo4j_To_StandardDate(ngaySinh);
                     info.add(rs.getString("MaNV"));
                     info.add(rs.getString("TenNV"));
-                    info.add(rs.getString("NgaySinhNV"));
+                    // Chuyển kiểu LocalDateTime về kiểu Date phù hợp để xuất ra màn hình
+                    info.add(localDateTime.format(DateTimeFormatter.ISO_DATE));
                     info.add(rs.getString("GioiTinhNV"));
                     info.add(rs.getString("DiaChiNV"));
                     info.add(rs.getString("ViTriCongViec"));
                     data.add(info);
-                }   
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(frmNhanVien.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             JOptionPane.showMessageDialog(this, "Không tồn tại mã dịch vụ cần tìm");
         }
+    }
+
+    public void loadDataByMaNV(String manv) {
+        DefaultTableModel model = ((DefaultTableModel) tbNhanVien.getModel());
+        model.setRowCount(0);
+        ResultSet rs = nvBll.getAllNhanVienByMaNv(manv);
+        if (rs != null) {
+            try {
+                while (rs.next()) {
+                    Vector<String> info = new Vector<String>();
+                    // Lấy chuỗi ngày từ Neo4j qua, nó là 1 dạng JSON gì đó
+                    String ngaySinh = rs.getString("NgaySinhNV");
+                    LocalDateTime localDateTime = convertDateNeo4j_To_StandardDate(ngaySinh);
+                    info.add(rs.getString("MaNV"));
+                    info.add(rs.getString("TenNV"));
+                    // Chuyển kiểu LocalDateTime về kiểu Date phù hợp để xuất ra màn hình
+                    info.add(localDateTime.format(DateTimeFormatter.ISO_DATE));
+                    info.add(rs.getString("GioiTinhNV"));
+                    info.add(rs.getString("DiaChiNV"));
+                    info.add(rs.getString("ViTriCongViec"));
+                    data.add(info);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(frmNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Không tồn tại mã nhân viên cần tìm");
+        }
+    }
+
+    public void loadDataByTenNV(String tennv) {
+        DefaultTableModel model = ((DefaultTableModel) tbNhanVien.getModel());
+        model.setRowCount(0);
+        ResultSet rs = nvBll.getAllNhanVienByTenNV(tennv);
+        if (rs != null) {
+            try {
+                while (rs.next()) {
+                    Vector<String> info = new Vector<String>();
+                    // Lấy chuỗi ngày từ Neo4j qua, nó là 1 dạng JSON gì đó
+                    String ngaySinh = rs.getString("NgaySinhNV");
+                    LocalDateTime localDateTime = convertDateNeo4j_To_StandardDate(ngaySinh);
+                    info.add(rs.getString("MaNV"));
+                    info.add(rs.getString("TenNV"));
+                    // Chuyển kiểu LocalDateTime về kiểu Date phù hợp để xuất ra màn hình
+                    info.add(localDateTime.format(DateTimeFormatter.ISO_DATE));
+                    info.add(rs.getString("GioiTinhNV"));
+                    info.add(rs.getString("DiaChiNV"));
+                    info.add(rs.getString("ViTriCongViec"));
+                    data.add(info);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(frmNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Không tồn tại tên nhân viên cần tìm");
+        }
+    }
+
+    public LocalDateTime convertDateNeo4j_To_StandardDate(String dateJson) {
+        // Tạo kiểu JSONObject để chứa kiểu dữ liệu ngày vừa lấy từ Neo4j qua
+        JSONObject jsonObject = new JSONObject(dateJson);
+        // Tạo một đối tượng LocalDateTime và phân tích chuỗi JSON ra thành kiểu LocalDateTime
+        LocalDateTime localDateTime = LocalDateTime.of(
+                jsonObject.getInt("year"),
+                jsonObject.getInt("monthValue"),
+                jsonObject.getInt("dayOfMonth"),
+                0,
+                0,
+                0
+        );
+        return localDateTime;
     }
 
     /**
@@ -158,9 +227,9 @@ public class frmNhanVien extends javax.swing.JInternalFrame {
 
         jLabel7.setText("Chức vụ");
 
-        cboChucVu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboChucVu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chăm sóc Khách hàng", "Bán hàng" }));
 
-        cboGioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboGioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
 
         tbNhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -173,6 +242,11 @@ public class frmNhanVien extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbNhanVienMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbNhanVien);
 
         btnThoat.setText("Thoát");
@@ -184,6 +258,11 @@ public class frmNhanVien extends javax.swing.JInternalFrame {
         btnSua.setText("Sửa");
 
         btnSearch.setText("Tìm kiếm");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -280,6 +359,25 @@ public class frmNhanVien extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tbNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbNhanVienMouseClicked
+        displayDetail(((JTable) evt.getSource()).getSelectedRow());
+    }//GEN-LAST:event_tbNhanVienMouseClicked
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        String manv = txtMaNV.getText();
+        String tennv = txtTenNV.getText();
+
+        if (manv.isEmpty() && tennv.isEmpty()) {
+            loadAllData();
+        } else {
+            if (manv.isEmpty() == false) {
+                loadDataByMaNV(manv);
+            } else {
+                loadDataByTenNV(tennv);
+            }
+        }
+    }//GEN-LAST:event_btnSearchActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
