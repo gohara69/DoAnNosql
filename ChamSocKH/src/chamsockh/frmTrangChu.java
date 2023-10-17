@@ -7,6 +7,7 @@ package chamsockh;
 import chamsockh.DichVu.frmDichVu;
 import chamsockh.Voucher.frmVoucher;
 import chamsockh.NhanVien.frmNhanVien;
+import chamsockh.SanPham.frmSanPham;
 
 /**
  *
@@ -36,13 +37,16 @@ public class frmTrangChu extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
         desktop = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         mnuDichVu = new javax.swing.JMenu();
         mnuAllDichVu = new javax.swing.JMenuItem();
         mnuVoucher = new javax.swing.JMenu();
         mnuHienThiVoucher = new javax.swing.JMenuItem();
-        mnuNhanVien = new javax.swing.JMenu();
+        mnuSanPham = new javax.swing.JMenu();
+        mnuAllSanPham = new javax.swing.JMenuItem();
+        mnuEmp = new javax.swing.JMenu();
         mnuShowEmp = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
@@ -52,6 +56,8 @@ public class frmTrangChu extends javax.swing.JFrame {
 
         jMenu3.setText("Edit");
         jMenuBar1.add(jMenu3);
+
+        jMenu4.setText("jMenu4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,8 +98,19 @@ public class frmTrangChu extends javax.swing.JFrame {
 
         menuBar.add(mnuVoucher);
 
-        mnuNhanVien.setText("Nhân viên");
-        mnuNhanVien.setName("mnuNhanVien"); // NOI18N
+        mnuSanPham.setText("Sản phẩm");
+
+        mnuAllSanPham.setText("Hiển thị sản phẩm");
+        mnuAllSanPham.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuAllSanPhamActionPerformed(evt);
+            }
+        });
+        mnuSanPham.add(mnuAllSanPham);
+
+        menuBar.add(mnuSanPham);
+
+        mnuEmp.setText("Nhân Viên");
 
         mnuShowEmp.setText("Hiển thị nhân viên");
         mnuShowEmp.addActionListener(new java.awt.event.ActionListener() {
@@ -101,9 +118,9 @@ public class frmTrangChu extends javax.swing.JFrame {
                 mnuShowEmpActionPerformed(evt);
             }
         });
-        mnuNhanVien.add(mnuShowEmp);
+        mnuEmp.add(mnuShowEmp);
 
-        menuBar.add(mnuNhanVien);
+        menuBar.add(mnuEmp);
 
         setJMenuBar(menuBar);
 
@@ -133,6 +150,15 @@ public class frmTrangChu extends javax.swing.JFrame {
         frm.toFront();
         frm.show();
     }//GEN-LAST:event_mnuShowEmpActionPerformed
+
+    private void mnuAllSanPhamActionPerformed(java.awt.event.ActionEvent evt) {                                              
+
+        frmSanPham frm = new frmSanPham();
+        frm.setSize(910, 550);
+        this.desktop.add(frm);
+        frm.toFront();
+        frm.show();
+    }                                          
 
     /**
      * @param args the command line arguments
@@ -174,13 +200,16 @@ public class frmTrangChu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem mnuAllDichVu;
+    private javax.swing.JMenuItem mnuAllSanPham;
     private javax.swing.JMenu mnuDichVu;
+    private javax.swing.JMenu mnuEmp;
     private javax.swing.JMenuItem mnuHienThiVoucher;
-    private javax.swing.JMenu mnuNhanVien;
+    private javax.swing.JMenu mnuSanPham;
     private javax.swing.JMenuItem mnuShowEmp;
     private javax.swing.JMenu mnuVoucher;
     // End of variables declaration//GEN-END:variables
