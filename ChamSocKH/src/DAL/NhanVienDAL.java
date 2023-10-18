@@ -64,7 +64,7 @@ public class NhanVienDAL {
     }
     
     public int insertNew(NhanVienDTO nv){
-        String query = String.format("create (q:NHANVIEN {MaNV:'%s', TenNV: '%s', NgaySinhNV: '%s', "
+        String query = String.format("create (q:NHANVIEN {MaNV:'%s', TenNV: '%s', NgaySinhNV: date('%s'), "
                                     + "GioiTinhNV: '%s', DiaChiNV: '%s', ViTriCongViec: '%s'})"
                                     ,nv.getMaNV(), nv.getTenNV(), nv.getNgaySinh(), 
                                     nv.getGioiTinh(), nv.getDiaChi(), nv.getViTriCongViec());
@@ -76,9 +76,8 @@ public class NhanVienDAL {
     }
     
     public int update(NhanVienDTO nv){
-        String query = String.format("match (p:NHANVIEN)\n" +
-                                    "where p.MaNV = '%s'\n" +
-                                    "set p.TenNV = '%s', p.NgaySinhNV = '%s', p.GioiTinhNV = '%s', p.GioiTinhNV = '%s', "
+        String query = String.format("match (p:NHANVIEN {MaNV: '%s'})  "
+                                    + "set p.TenNV = '%s', p.NgaySinhNV = date('%s'), p.GioiTinhNV = '%s', "
                                     + "p.DiaChiNV = '%s', p.ViTriCongViec = '%s'"
                                     ,nv.getMaNV(), nv.getTenNV(), nv.getNgaySinh(), 
                                     nv.getGioiTinh(), nv.getDiaChi(), nv.getViTriCongViec());
@@ -90,9 +89,9 @@ public class NhanVienDAL {
     }
     
     public int delete(String manv){
-        String query = String.format("match (p:NHANVIEN)\n" +
-                                    "where p.MaNV = '%s'\n" +
-                                    "detach delete p"
+        String query = String.format("match (p:NHANVIEN)" 
+                                    + "where p.MaNV = '%s'" 
+                                    + "detach delete p"
                                     ,manv);
         try{
             return _connection.executeUpdate(query);

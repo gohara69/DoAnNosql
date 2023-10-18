@@ -5,6 +5,7 @@
 package chamsockh.NhanVien;
 
 import BLL.NhanVienBll;
+import DTO.NhanVienDTO;
 import chamsockh.frmTrangChu;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -250,12 +251,32 @@ public class frmNhanVien extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(tbNhanVien);
 
         btnThoat.setText("Thoát");
+        btnThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThoatActionPerformed(evt);
+            }
+        });
 
         btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
 
         btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
 
         btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         btnSearch.setText("Tìm kiếm");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -275,7 +296,20 @@ public class frmNhanVien extends javax.swing.JInternalFrame {
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(70, 70, 70)
+                                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(50, 50, 50)
+                                        .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 71, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(41, 41, 41)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,27 +320,15 @@ public class frmNhanVien extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel7))
                                 .addGap(34, 34, 34)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtDiaChi, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                                    .addComponent(txtTenNV, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                                    .addComponent(txtMaNV)
-                                    .addComponent(cboChucVu, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cboGioiTinh, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtNgaySinh, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(34, 34, 34)
-                                        .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                                        .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(59, 59, 59)
-                                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(47, 47, 47)
-                                        .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtDiaChi, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                                        .addComponent(txtTenNV, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                                        .addComponent(txtMaNV)
+                                        .addComponent(cboChucVu, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cboGioiTinh, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtNgaySinh, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)))))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -348,8 +370,8 @@ public class frmNhanVien extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -378,6 +400,82 @@ public class frmNhanVien extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        String maNV = txtMaNV.getText();
+        String tenNV = txtTenNV.getText();
+        String ngaySinh = txtNgaySinh.getText();
+        String gioiTinh = cboGioiTinh.getItemAt(cboGioiTinh.getSelectedIndex()).toString();
+        String diaChi = txtDiaChi.getText();
+        String chucVu = cboChucVu.getItemAt(cboChucVu.getSelectedIndex()).toString();
+        NhanVienDTO nv = new NhanVienDTO(maNV, tenNV, ngaySinh, gioiTinh, diaChi, chucVu);
+        try{
+            if(maNV.isEmpty() || tenNV.isEmpty() || ngaySinh.isEmpty() || diaChi.isEmpty()){
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin để thêm nhân viên");
+            } else {
+                int sl = nvBll.getSLNhanVienTheoMa(maNV);
+                if(sl == 0){
+                    int kq = nvBll.insertNew(nv);
+                    JOptionPane.showMessageDialog(this, "Thêm nhân viên thành công");
+                    loadAllData();
+                } else if(sl > 0) {
+                    JOptionPane.showMessageDialog(this, "Lỗi trùng khóa mã nhân viên");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Lỗi không thể thêm mới nhân viên");
+                }
+            }
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Lỗi không thể thêm mới nhân viên");
+        }
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        String maNV = txtMaNV.getText();
+        String tenNV = txtTenNV.getText();
+        String ngaySinh = txtNgaySinh.getText();
+        String gioiTinh = cboGioiTinh.getItemAt(cboGioiTinh.getSelectedIndex()).toString();
+        String diaChi = txtDiaChi.getText();
+        String chucVu = cboChucVu.getItemAt(cboChucVu.getSelectedIndex()).toString();
+        NhanVienDTO nv = new NhanVienDTO(maNV, tenNV, ngaySinh, gioiTinh, diaChi, chucVu);
+
+        try{
+            if(maNV.isEmpty() || tenNV.isEmpty() || ngaySinh.isEmpty() || diaChi.isEmpty()){
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ để chỉnh sửa thông tin nhân viên");
+            } else {
+                int sl = nvBll.getSLNhanVienTheoMa(maNV);
+                if(sl > 0){
+                    int kq = nvBll.update(nv);
+                    JOptionPane.showMessageDialog(this, "Sửa nhân viên thành công");
+                    loadAllData();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Lỗi không thể sửa nhân viên");
+                }
+            }
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Lỗi không thể sửa nhân viên");
+        }
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        String manv = txtMaNV.getText();
+        if(manv.isEmpty()){
+            System.out.println("Vui lòng nhập mã nhân viên để xóa");
+        } else {
+            try{
+                int kq = nvBll.delete(manv);
+                JOptionPane.showMessageDialog(this, "Xóa nhân viên thành công");
+                loadAllData();
+            } catch (Exception e){
+                JOptionPane.showMessageDialog(this, "Lỗi không thể xóa nhân viên");
+            }
+        }
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
+        int result = JOptionPane.showConfirmDialog(this, "Bạn có muốn thoát chương trình không?", "Thông báo", JOptionPane.YES_NO_OPTION); 
+        if(result ==JOptionPane.YES_OPTION)
+            this.dispose();
+    }//GEN-LAST:event_btnThoatActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
