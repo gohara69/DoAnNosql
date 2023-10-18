@@ -21,8 +21,7 @@ public class Neo4jConnection {
     
     public Neo4jConnection(){
         try {
-//            _connection = DriverManager.getConnection("jdbc:neo4j:bolt://localhost:7687/", "neo4j", "password");
-            _connection = DriverManager.getConnection("jdbc:neo4j:bolt://localhost:7687/", "neo4j", "21062002");
+            _connection = DriverManager.getConnection("jdbc:neo4j:bolt://localhost:7687/", "neo4j", "password");
         } catch (SQLException ex) {
             Logger.getLogger(Neo4jConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
