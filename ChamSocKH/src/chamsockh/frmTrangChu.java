@@ -174,7 +174,7 @@ public class frmTrangChu extends javax.swing.JFrame {
 
     private void mnuHienThiVoucherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuHienThiVoucherActionPerformed
         frmVoucher frm = new frmVoucher();
-        frm.setSize(910, 550);
+        frm.setSize(1386, 646);
         this.desktop.add(frm);
         frm.toFront();
         frm.show();
@@ -182,7 +182,7 @@ public class frmTrangChu extends javax.swing.JFrame {
 
     private void mnuAllDichVuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAllDichVuActionPerformed
         frmDichVu frm = new frmDichVu();
-        frm.setSize(910, 550);
+        frm.setSize(1386, 646);
         this.desktop.add(frm);
         frm.toFront();
         frm.show();
@@ -190,7 +190,7 @@ public class frmTrangChu extends javax.swing.JFrame {
 
     private void mnuShowEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuShowEmpActionPerformed
         frmNhanVien frm = new frmNhanVien();
-        frm.setSize(910, 550);
+        frm.setSize(1386, 646);
         this.desktop.add(frm);
         frm.toFront();
         frm.show();
@@ -199,7 +199,7 @@ public class frmTrangChu extends javax.swing.JFrame {
     private void mnuAllSanPhamActionPerformed(java.awt.event.ActionEvent evt) {                                              
 
         frmSanPham frm = new frmSanPham();
-        frm.setSize(910, 550);
+        frm.setSize(1386, 646);
         this.desktop.add(frm);
         frm.toFront();
         frm.show();

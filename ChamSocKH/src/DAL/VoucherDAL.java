@@ -92,4 +92,14 @@ public class VoucherDAL {
             return -1;
         }
     }
+    
+    public ResultSet getAllVoucherByMaLH(String maLH){
+        String query = String.format("match (p:VOUCHER)-[]-(:LIENHE {MaLH: '" + maLH + "'})" +
+                       "return p.MaVoucher as MaVoc, p.TenVoucher as TenVoc, p.GiamGia as GiamGia");
+        try{
+            return _connection.executeQuery(query);
+        } catch(Exception e){
+            return null;
+        }
+    }
 }
