@@ -5,6 +5,7 @@
 package chamsockh;
 
 import chamsockh.DichVu.frmDichVu;
+import chamsockh.KhachHang.frmKhachHang;
 import chamsockh.LienHe.frmLienHe;
 import chamsockh.LienHe.frmThucHienLH;
 import chamsockh.Voucher.frmVoucher;
@@ -53,6 +54,8 @@ public class frmTrangChu extends javax.swing.JFrame {
         mnuLienHe = new javax.swing.JMenu();
         mnuHienThiLH = new javax.swing.JMenuItem();
         btnThucHienLH = new javax.swing.JMenuItem();
+        mnuKhachHang = new javax.swing.JMenu();
+        mnuShowCus = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -126,6 +129,7 @@ public class frmTrangChu extends javax.swing.JFrame {
         mnuEmp.add(mnuShowEmp);
 
         menuBar.add(mnuEmp);
+
         mnuLienHe.setText("Liên hệ");
         mnuLienHe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,6 +154,18 @@ public class frmTrangChu extends javax.swing.JFrame {
         mnuLienHe.add(btnThucHienLH);
 
         menuBar.add(mnuLienHe);
+
+        mnuKhachHang.setText("Khách hàng");
+
+        mnuShowCus.setText("Hiển thị khách hàng");
+        mnuShowCus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuShowCusActionPerformed(evt);
+            }
+        });
+        mnuKhachHang.add(mnuShowCus);
+
+        menuBar.add(mnuKhachHang);
 
         setJMenuBar(menuBar);
 
@@ -213,6 +229,14 @@ public class frmTrangChu extends javax.swing.JFrame {
         frm.show();
     }//GEN-LAST:event_btnThucHienLHActionPerformed
 
+    private void mnuShowCusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuShowCusActionPerformed
+        frmKhachHang frm = new frmKhachHang();
+        frm.setSize(910, 550);
+        this.desktop.add(frm);
+        frm.toFront();
+        frm.show();
+    }//GEN-LAST:event_mnuShowCusActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -263,11 +287,13 @@ public class frmTrangChu extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuAllSanPham;
     private javax.swing.JMenu mnuDichVu;
     private javax.swing.JMenu mnuEmp;
-    private javax.swing.JMenuItem mnuHienThiVoucher;
-    private javax.swing.JMenu mnuSanPham;
-    private javax.swing.JMenuItem mnuShowEmp;
     private javax.swing.JMenuItem mnuHienThiLH;
+    private javax.swing.JMenuItem mnuHienThiVoucher;
+    private javax.swing.JMenu mnuKhachHang;
     private javax.swing.JMenu mnuLienHe;
+    private javax.swing.JMenu mnuSanPham;
+    private javax.swing.JMenuItem mnuShowCus;
+    private javax.swing.JMenuItem mnuShowEmp;
     private javax.swing.JMenu mnuVoucher;
     // End of variables declaration//GEN-END:variables
 }

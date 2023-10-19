@@ -103,10 +103,10 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuShowEmpActionPerformed"/>
               </Events>
-	    </MenuItem>
-	  </SubComponents>
+            </MenuItem>
+          </SubComponents>
         </Menu>
-	<Menu class="javax.swing.JMenu" name="mnuLienHe">
+        <Menu class="javax.swing.JMenu" name="mnuLienHe">
           <Properties>
             <Property name="text" type="java.lang.String" value="Li&#xea;n h&#x1ec7;"/>
           </Properties>
@@ -128,6 +128,21 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThucHienLHActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="mnuKhachHang">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Kh&#xe1;ch h&#xe0;ng"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuShowCus">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Hi&#x1ec3;n th&#x1ecb; kh&#xe1;ch h&#xe0;ng"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuShowCusActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
