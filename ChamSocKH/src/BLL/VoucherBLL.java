@@ -80,4 +80,12 @@ public class VoucherBLL {
             return -1;
         }
     }
+    
+    public ResultSet getAllVoucherByMaLH(String maLH){
+        try{
+            return _dal.getAllVoucherByMaLH(maLH);
+        } catch(Exception e){
+            return null;
+        }
+    }
 }

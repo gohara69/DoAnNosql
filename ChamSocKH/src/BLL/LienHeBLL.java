@@ -35,4 +35,12 @@ public class LienHeBLL {
         }
         return null;
     }
+    
+    public ResultSet getAllLienHeTheoMaNV(String maNV){
+        try{
+            return _dal.getAllLienHeTheoMaNV(maNV);
+        } catch(Exception e){
+            return null;
+        }
+    }
 }

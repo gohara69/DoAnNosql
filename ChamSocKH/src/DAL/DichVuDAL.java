@@ -94,4 +94,14 @@ public class DichVuDAL {
             return -1;
         }
     }
+    
+    public ResultSet getAllDichVuByMaLH(String maLH){
+        String query = String.format("match (p:DICHVU)-[]-(:LIENHE {MaLH: '" + maLH + "'})" +
+                       "return p.MaDV as MaDV, p.TenDV as TenDV, p.GiaDV as GiaDV, p.MoTaDV as MoTaDV");
+        try{
+            return _connection.executeQuery(query);
+        } catch(Exception e){
+            return null;
+        }
+    }
 }

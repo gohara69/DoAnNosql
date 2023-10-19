@@ -24,4 +24,17 @@ public class LienHeDAL {
             return null;
         }
     }
+    
+    public ResultSet getAllLienHeTheoMaNV(String maNV){
+        String query = "match (q:KHACHHANG)-[]-(p:LIENHE)-[]-(:NHANVIEN {MaNV: '" + maNV + "'})\n" +
+                       "return p.MaLH as MALH, p.ThoiGianLH.year+\"/\"+p.ThoiGianLH.month+\"/\"+p.ThoiGianLH.day as TGLH, p.TinhTrangLH as TinhTrang, q.TenKH as TENKH";
+        
+        try{
+            return _connection.executeQuery(query);
+        } catch(Exception e){
+            return null;
+        }
+    }
+    
+    
 }

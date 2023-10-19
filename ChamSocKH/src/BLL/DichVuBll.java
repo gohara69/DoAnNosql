@@ -80,4 +80,12 @@ public class DichVuBll {
             return -1;
         }
     }
+    
+    public ResultSet getAllDichVuByMaLH(String maLH){
+        try{
+            return _dvDAL.getAllDichVuByMaLH(maLH);
+        } catch(Exception e){
+            return null;
+        }
+    }
 }
