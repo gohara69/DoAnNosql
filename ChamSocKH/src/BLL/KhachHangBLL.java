@@ -19,6 +19,14 @@ public class KhachHangBLL {
         _khDAL = new KhachHangDAL();
     }
     
+    public ResultSet getAllTenKhachHang_TheoTenSPMua(String tenSP){
+        try{
+            return _khDAL.getAllTenKhachHang_TheoTenSPMua(tenSP);
+        } catch(Exception e){
+            return null;
+        }
+    }
+    
     public ResultSet getAllKhachHang(){
         try{
             return _khDAL.getAllKhachHang();

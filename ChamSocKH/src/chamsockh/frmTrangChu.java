@@ -6,6 +6,8 @@ package chamsockh;
 
 import chamsockh.DichVu.frmDichVu;
 import chamsockh.KhachHang.frmKhachHang;
+import chamsockh.KhieuNai.frmHienThiKhieuNai;
+import chamsockh.KhieuNai.frmThucHienKhieuNai;
 import chamsockh.LienHe.frmLienHe;
 import chamsockh.LienHe.frmThucHienLH;
 import chamsockh.Voucher.frmVoucher;
@@ -56,6 +58,9 @@ public class frmTrangChu extends javax.swing.JFrame {
         btnThucHienLH = new javax.swing.JMenuItem();
         mnuKhachHang = new javax.swing.JMenu();
         mnuShowCus = new javax.swing.JMenuItem();
+        mnuKhieuNai = new javax.swing.JMenu();
+        mnuTHKN = new javax.swing.JMenuItem();
+        mnuHTKN = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -167,6 +172,26 @@ public class frmTrangChu extends javax.swing.JFrame {
 
         menuBar.add(mnuKhachHang);
 
+        mnuKhieuNai.setText("Khiếu nại");
+
+        mnuTHKN.setText("Thực hiện khiếu nại");
+        mnuTHKN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuTHKNActionPerformed(evt);
+            }
+        });
+        mnuKhieuNai.add(mnuTHKN);
+
+        mnuHTKN.setText("Hiển thị khiếu nại");
+        mnuHTKN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuHTKNActionPerformed(evt);
+            }
+        });
+        mnuKhieuNai.add(mnuHTKN);
+
+        menuBar.add(mnuKhieuNai);
+
         setJMenuBar(menuBar);
 
         pack();
@@ -237,6 +262,22 @@ public class frmTrangChu extends javax.swing.JFrame {
         frm.show();
     }//GEN-LAST:event_mnuShowCusActionPerformed
 
+    private void mnuTHKNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuTHKNActionPerformed
+        frmThucHienKhieuNai frm = new frmThucHienKhieuNai();
+        frm.setSize(910, 550);
+        this.desktop.add(frm);
+        frm.toFront();
+        frm.show();
+    }//GEN-LAST:event_mnuTHKNActionPerformed
+
+    private void mnuHTKNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuHTKNActionPerformed
+        frmHienThiKhieuNai frm = new frmHienThiKhieuNai();
+        frm.setSize(910, 550);
+        this.desktop.add(frm);
+        frm.toFront();
+        frm.show();
+    }//GEN-LAST:event_mnuHTKNActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -287,13 +328,16 @@ public class frmTrangChu extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuAllSanPham;
     private javax.swing.JMenu mnuDichVu;
     private javax.swing.JMenu mnuEmp;
+    private javax.swing.JMenuItem mnuHTKN;
     private javax.swing.JMenuItem mnuHienThiLH;
     private javax.swing.JMenuItem mnuHienThiVoucher;
     private javax.swing.JMenu mnuKhachHang;
+    private javax.swing.JMenu mnuKhieuNai;
     private javax.swing.JMenu mnuLienHe;
     private javax.swing.JMenu mnuSanPham;
     private javax.swing.JMenuItem mnuShowCus;
     private javax.swing.JMenuItem mnuShowEmp;
+    private javax.swing.JMenuItem mnuTHKN;
     private javax.swing.JMenu mnuVoucher;
     // End of variables declaration//GEN-END:variables
 }

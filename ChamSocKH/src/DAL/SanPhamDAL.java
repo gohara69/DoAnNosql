@@ -16,6 +16,17 @@ public class SanPhamDAL {
     public SanPhamDAL(){
         _connection = new Neo4jConnection();
     }
+    
+    // Sang Lam
+    public ResultSet getAllTenSanPham(){
+        String query = "match (p:SANPHAM) return p.TenSP as TenSP";
+        try{
+            return _connection.executeQuery(query);
+        } catch(Exception e){
+            return null;
+        }
+    }
+    
     public ResultSet getAllSanPham(){
         String query = "match (p:SANPHAM) return p.MaSP as MaSP, p.TenSP as TenSP,"
                      + " p.GiaSP as GiaSP";

@@ -147,6 +147,29 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="mnuKhieuNai">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Khi&#x1ebf;u n&#x1ea1;i"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuTHKN">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Th&#x1ef1;c hi&#x1ec7;n khi&#x1ebf;u n&#x1ea1;i"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuTHKNActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuHTKN">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Hi&#x1ec3;n th&#x1ecb; khi&#x1ebf;u n&#x1ea1;i"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuHTKNActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
       </SubComponents>
     </Menu>
   </NonVisualComponents>

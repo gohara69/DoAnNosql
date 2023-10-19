@@ -18,6 +18,16 @@ public class SanPhamBLL {
     public SanPhamBLL(){
         _spDAL = new SanPhamDAL();
     }
+    
+    // Sang lam
+    public ResultSet getAllTenSanPham(){
+        try{
+            return _spDAL.getAllTenSanPham();
+        } catch(Exception e){
+            return null;
+        }
+    }
+    
     public ResultSet getAllSanPham(){
         try{
             return _spDAL.getAllSanPham();

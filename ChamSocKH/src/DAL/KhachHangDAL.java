@@ -18,6 +18,16 @@ public class KhachHangDAL {
         _connection = new Neo4jConnection();
     }
     
+    public ResultSet getAllTenKhachHang_TheoTenSPMua(String tenSP){
+        String query = "match (k:KHACHHANG) - [:MUA] -> (h:HOADON) -[:CO] -> "
+                + "(s:SANPHAM{TenSP: '"+tenSP+"'}) return k.MaKH as MaKH";
+        try{
+            return _connection.executeQuery(query);
+        } catch(Exception e){
+            return null;
+        }
+    }
+    
     public ResultSet getAllKhachHang(){
         String query = "match (p:KHACHHANG) return p.MaKH as MaKH, p.TenKH as TenKH,"
                      + " p.SDTKH as SoDienThoaiKH, p.DiaChiKH as DiaChiKH";
