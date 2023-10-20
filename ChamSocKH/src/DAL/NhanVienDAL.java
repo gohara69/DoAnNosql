@@ -19,7 +19,7 @@ public class NhanVienDAL {
     }
     
     public ResultSet getAllNhanVien(){
-        String query = "match (p:NHANVIEN) return p.MaNV as MaNV, p.TenNV as TenNV,"
+        String query = "match (p:NHANVIEN) return distinct p.MaNV as MaNV, p.TenNV as TenNV,"
                      + " p.NgaySinhNV as NgaySinhNV, p.GioiTinhNV as GioiTinhNV, p.DiaChiNV as DiaChiNV, p.ViTriCongViec as ViTriCongViec";
         try{
             return _connection.executeQuery(query);

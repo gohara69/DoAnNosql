@@ -30,6 +30,7 @@ public class frmVoucher extends javax.swing.JInternalFrame {
     public frmVoucher() {
         initComponents();
         initTable();
+        
         ResultSet rs = _bll.getAllVoucher();
         try {
             while(rs.next()){
@@ -42,6 +43,8 @@ public class frmVoucher extends javax.swing.JInternalFrame {
         } catch (SQLException ex) {
             Logger.getLogger(frmVoucher.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
     }
     
     public void initTable(){
