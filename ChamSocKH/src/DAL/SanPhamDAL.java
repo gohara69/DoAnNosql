@@ -36,6 +36,16 @@ public class SanPhamDAL {
             return null;
         }
     }
+    public ResultSet getAllSanPhamByMaSP(String masp){
+        String query = String.format("match (p:SANPHAM)\n" +
+                       "where p.MaSP contains '%s'\n" +
+                       "return p.MaSP as MaSP, p.TenSP as TenSP, p.GiaSP as GiaSP", masp);
+        try{
+            return _connection.executeQuery(query);
+        } catch(Exception e){
+            return null;
+        }
+    }
     public ResultSet getAllSanPhamTenSP(String tenSP){
         String query = String.format("match (p:SANPHAM)\n" +
                        "where p.TenSP contains '%s'\n" +

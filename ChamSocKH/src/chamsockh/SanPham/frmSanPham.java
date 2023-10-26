@@ -48,9 +48,9 @@ public class frmSanPham extends javax.swing.JInternalFrame {
     }
         public void initTable()
         {
-        header.add("Mã dịch vụ");
-        header.add("Tên dịch vụ");
-        header.add("Giá dịch vụ");
+        header.add("Mã sản phẩm");
+        header.add("Tên sản phẩm");
+        header.add("Giá sản phẩm");
         tblSanPham.setModel(new DefaultTableModel(data, header));
     }
         public void displayDetail(int row){
@@ -90,9 +90,9 @@ public class frmSanPham extends javax.swing.JInternalFrame {
             try {
                 while(rs.next()){
                     Vector<String> info = new Vector<String>();
-                    info.add(rs.getString("MaDV"));
-                    info.add(rs.getString("TenDV"));
-                    info.add(rs.getString("GiaDV"));
+                    info.add(rs.getString("MaSP"));
+                    info.add(rs.getString("TenSP"));
+                    info.add(rs.getString("GiaSP"));
                     data.add(info);
                 }   
             } catch (SQLException ex) {
@@ -105,14 +105,14 @@ public class frmSanPham extends javax.swing.JInternalFrame {
         public void loadDataByTenSP(String tensp){
         DefaultTableModel model = ((DefaultTableModel)tblSanPham.getModel());
         model.setRowCount(0);
-        ResultSet rs = spBLL.getAllDichVuByTenDV(tensp);
+        ResultSet rs = spBLL.getAllSanPhamByTenSP(tensp);
         if(rs != null){
             try {
                 while(rs.next()){
                     Vector<String> info = new Vector<String>();
-                    info.add(rs.getString("MaDV"));
-                    info.add(rs.getString("TenDV"));
-                    info.add(rs.getString("GiaDV"));
+                    info.add(rs.getString("MaSP"));
+                    info.add(rs.getString("TenSP"));
+                    info.add(rs.getString("GiaSP"));
                     data.add(info);
                 }   
             } catch (SQLException ex) {

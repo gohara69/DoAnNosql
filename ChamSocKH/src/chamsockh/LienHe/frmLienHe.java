@@ -163,11 +163,6 @@ public class frmLienHe extends javax.swing.JInternalFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        txtMaLienHe = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        btnTimKiem = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         cboNhanVien = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblLienHe = new javax.swing.JTable();
@@ -175,8 +170,6 @@ public class frmLienHe extends javax.swing.JInternalFrame {
         tblDichVu = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        cboTinhTrangLH1 = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblVoucher = new javax.swing.JTable();
@@ -189,24 +182,6 @@ public class frmLienHe extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Nhân viên");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
-        getContentPane().add(txtMaLienHe, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 190, -1));
-
-        jLabel3.setText("Thời gian liên hệ");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
-
-        btnTimKiem.setText("Tìm kiếm");
-        btnTimKiem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTimKiemActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, -1, -1));
-
-        jLabel4.setText("Tình trạng");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
-
-        jFormattedTextField1.setToolTipText("__/__/____");
-        getContentPane().add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 160, -1));
 
         cboNhanVien.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         getContentPane().add(cboNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 190, -1));
@@ -262,12 +237,6 @@ public class frmLienHe extends javax.swing.JInternalFrame {
         jLabel6.setText("DANH SÁCH DỊCH VỤ LIÊN HỆ");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 330, -1, -1));
 
-        jLabel7.setText("Mã liên hệ");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
-
-        cboTinhTrangLH1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "------------------", "Thành công", "Không thành công", " ", " " }));
-        getContentPane().add(cboTinhTrangLH1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 190, -1));
-
         jLabel8.setText("DANH SÁCH VOUCHER LIÊN HỆ");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 40, -1, -1));
 
@@ -294,21 +263,6 @@ public class frmLienHe extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
-//        String maVoucher = txtMaVoucher.getText();
-//        String tenVoucher = txtTenVoucher.getText();
-//
-//        if(maVoucher.isEmpty() && tenVoucher.isEmpty()){
-//            loadAllData();
-//        } else {
-//            if(maVoucher.isEmpty() == false){
-//                loadDataByMaVoucher(maVoucher);
-//            } else {
-//                loadDataByTenVoucher(tenVoucher);
-//            }
-//        }
-    }//GEN-LAST:event_btnTimKiemActionPerformed
-
     private void tblLienHeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLienHeMouseClicked
         showVoucherDaLienHe(((JTable) evt.getSource()).getSelectedRow());
         showDichVuDaLienHe(((JTable) evt.getSource()).getSelectedRow());
@@ -329,17 +283,11 @@ public class frmLienHe extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnTimKiem;
     private javax.swing.JComboBox<String> cboNhanVien;
-    private javax.swing.JComboBox<String> cboTinhTrangLH1;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
@@ -347,6 +295,5 @@ public class frmLienHe extends javax.swing.JInternalFrame {
     private javax.swing.JTable tblDichVu;
     private javax.swing.JTable tblLienHe;
     private javax.swing.JTable tblVoucher;
-    private javax.swing.JTextField txtMaLienHe;
     // End of variables declaration//GEN-END:variables
 }

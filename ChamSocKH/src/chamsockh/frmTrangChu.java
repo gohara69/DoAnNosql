@@ -13,6 +13,8 @@ import chamsockh.LienHe.frmThucHienLH;
 import chamsockh.Voucher.frmVoucher;
 import chamsockh.NhanVien.frmNhanVien;
 import chamsockh.SanPham.frmSanPham;
+import chamsockh.HoaDon.frmHoaDon;
+import chamsockh.HoaDon.frmChiTietHoaDon;
 
 /**
  *
@@ -61,6 +63,9 @@ public class frmTrangChu extends javax.swing.JFrame {
         mnuKhieuNai = new javax.swing.JMenu();
         mnuTHKN = new javax.swing.JMenuItem();
         mnuHTKN = new javax.swing.JMenuItem();
+        mnuHoaDon = new javax.swing.JMenu();
+        mnuDSHoaDon = new javax.swing.JMenuItem();
+        mnuCTHoaDon = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -192,6 +197,26 @@ public class frmTrangChu extends javax.swing.JFrame {
 
         menuBar.add(mnuKhieuNai);
 
+        mnuHoaDon.setText("Hóa đơn");
+
+        mnuDSHoaDon.setText("Danh sách hóa đơn");
+        mnuDSHoaDon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuDSHoaDonActionPerformed(evt);
+            }
+        });
+        mnuHoaDon.add(mnuDSHoaDon);
+
+        mnuCTHoaDon.setText("Chi tiết hóa đơn");
+        mnuCTHoaDon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuCTHoaDonActionPerformed(evt);
+            }
+        });
+        mnuHoaDon.add(mnuCTHoaDon);
+
+        menuBar.add(mnuHoaDon);
+
         setJMenuBar(menuBar);
 
         pack();
@@ -278,6 +303,23 @@ public class frmTrangChu extends javax.swing.JFrame {
         frm.show();
     }//GEN-LAST:event_mnuHTKNActionPerformed
 
+    private void mnuDSHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuDSHoaDonActionPerformed
+        // TODO add your handling code here:
+        frmHoaDon frm = new frmHoaDon();
+        frm.setSize(910, 550);
+        this.desktop.add(frm);
+        frm.toFront();
+        frm.show();
+    }//GEN-LAST:event_mnuDSHoaDonActionPerformed
+
+    private void mnuCTHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCTHoaDonActionPerformed
+        frmChiTietHoaDon  frm = new frmChiTietHoaDon();
+        frm.setSize(1386, 646);
+        this.desktop.add(frm);
+        frm.toFront();
+        frm.show();
+    }//GEN-LAST:event_mnuCTHoaDonActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -326,11 +368,14 @@ public class frmTrangChu extends javax.swing.JFrame {
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem mnuAllDichVu;
     private javax.swing.JMenuItem mnuAllSanPham;
+    private javax.swing.JMenuItem mnuCTHoaDon;
+    private javax.swing.JMenuItem mnuDSHoaDon;
     private javax.swing.JMenu mnuDichVu;
     private javax.swing.JMenu mnuEmp;
     private javax.swing.JMenuItem mnuHTKN;
     private javax.swing.JMenuItem mnuHienThiLH;
     private javax.swing.JMenuItem mnuHienThiVoucher;
+    private javax.swing.JMenu mnuHoaDon;
     private javax.swing.JMenu mnuKhachHang;
     private javax.swing.JMenu mnuKhieuNai;
     private javax.swing.JMenu mnuLienHe;

@@ -37,12 +37,12 @@ public class SanPhamBLL {
     }
     public ResultSet getAllDSanPhamByMaSP(String masp){
         try{
-            return _spDAL.getAllSanPhamTenSP(masp);
+            return _spDAL.getAllSanPhamByMaSP(masp);
         } catch(Exception e){
             return null;
         }
     }
-    public ResultSet getAllDichVuByTenDV(String tensp){
+    public ResultSet getAllSanPhamByTenSP(String tensp){
         try{
             return _spDAL.getAllSanPhamTenSP(tensp);
         } catch(Exception e){
